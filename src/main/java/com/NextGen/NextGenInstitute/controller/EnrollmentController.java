@@ -44,6 +44,6 @@ public class EnrollmentController {
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteStudent(@PathVariable int id){
         enrollmentService.deleteStudent(id);
-        return ResponseEntity.ok("Student Deleted Sucessfully!!");
+        return ResponseEntity.ok("Student Deleted Sucessfully!!!");
     }
 }
