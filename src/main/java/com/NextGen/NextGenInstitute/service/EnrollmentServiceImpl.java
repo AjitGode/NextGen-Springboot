@@ -38,9 +38,19 @@ public class EnrollmentServiceImpl implements EnrollmentService {
            existingStudent.setEmail(enrollment.getEmail());
            existingStudent.setPhone(enrollment.getPhone());
            existingStudent.setCourseName(enrollment.getCourseName());
+           existingStudent.setCity(enrollment.getCity());
+           existingStudent.setEducation(enrollment.getEducation());
+           existingStudent.setWorkingProfession(enrollment.getWorkingProfession());
            return enrollmentrepository.save(existingStudent);
        }
        throw new RuntimeException("Student not found with Id:"+id);
+    }
+
+    public Enrollment updatePaymentStatus(int id, String paymentStatus) {
+        Enrollment enrollment = enrollmentrepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Enrollment not found"));
+        enrollment.setPaymentStatus(paymentStatus);
+        return enrollmentrepository.save(enrollment);
     }
 
     @Override

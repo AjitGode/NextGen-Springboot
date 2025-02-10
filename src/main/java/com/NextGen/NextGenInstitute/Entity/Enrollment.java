@@ -23,8 +23,20 @@ public class Enrollment {
     @Column(nullable = false)
     private String courseName;
 
+    @Column(nullable = false)
+    private String city;
+
+    @Column(nullable = false)
+    private String education;
+
+    @Column(nullable = false)
+    private String workingProfession;
+
     @Column(nullable = false, updatable = false)
     private LocalDateTime enrollmentDate;
+
+    @Column(nullable = false)
+    private String paymentStatus = "pending";
 
     // Getter Setter
 
@@ -68,11 +80,43 @@ public class Enrollment {
         this.courseName = courseName;
     }
 
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getEducation() {
+        return education;
+    }
+
+    public void setEducation(String education) {
+        this.education = education;
+    }
+
+    public String getWorkingProfession() {
+        return workingProfession;
+    }
+
+    public void setWorkingProfession(String workingProfession) {
+        this.workingProfession = workingProfession;
+    }
+
     public LocalDateTime getEnrollmentDate() {
         return enrollmentDate;
     }
 
     public void setEnrollmentDate(LocalDateTime enrollmentDate) {
         this.enrollmentDate = enrollmentDate;
+    }
+
+    public String getPaymentStatus() {
+        return paymentStatus;
+    }
+
+    public void setPaymentStatus(String paymentStatus) {
+        this.paymentStatus = paymentStatus;
     }
 }

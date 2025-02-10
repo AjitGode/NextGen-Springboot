@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/enrollment")
@@ -36,6 +37,16 @@ public class EnrollmentController {
     public  ResponseEntity<Enrollment> updateStudent(@PathVariable int id,@RequestBody Enrollment enrollment){
         try{
             return ResponseEntity.ok(enrollmentService.updateStudent(id,enrollment));
+        } catch (RuntimeException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+    @PutMapping("/{id}/payment-status")
+    public ResponseEntity<Enrollment> updatePaymentStatus(@PathVariable int id, @RequestBody Map<String, String> payload) {
+        String paymentStatus = payload.get("paymentStatus");
+        try {
+            Enrollment updatedEnrollment = enrollmentService.updatePaymentStatus(id, paymentStatus);
+            return ResponseEntity.ok(updatedEnrollment);
         } catch (RuntimeException e) {
             return ResponseEntity.notFound().build();
         }

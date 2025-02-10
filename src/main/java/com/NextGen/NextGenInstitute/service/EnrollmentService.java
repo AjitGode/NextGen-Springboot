@@ -13,6 +13,7 @@ public interface EnrollmentService {
     Optional<Enrollment> getStudentById(int id);
 
     Enrollment updateStudent(int id, Enrollment enrollment);
+    Enrollment updatePaymentStatus(int id, String  paymentStatus);
 
     void deleteStudent(int id);
 }
